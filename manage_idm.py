@@ -72,12 +72,14 @@ class DatabaseEdit:
             c.execute("update Felica set time='%s' where IDm='%s'" % (now, idm))
             if status == "offline":
                 status = "online"
+                msg = "さんが自転車に乗ります。気をつけてね！"
             else:
                 status = "offline"
+                msg = "さんが自転車を返しました。お帰りなさい！"
 
             c.execute("update Felica set status='%s' where IDm='%s'" % ("status", idm))
             con.commit()
-            return(name +"さんがofflineになりました")
+            return(name + msg )
         # 確認するとき
         # self.table_display()
 
